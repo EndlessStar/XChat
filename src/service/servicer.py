@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 
 from socket import *
 from time import ctime
@@ -24,7 +24,7 @@ while True:
 			break
 		data = data.decode('utf-8')
 		respMsg = "[%s] %s" % (ctime(), data)
-		tcpCliSock.send(bytes(respMsg, 'utf-8'))
+		tcpCliSock.send(respMsg.encode('utf-8'))
 
 	tcpCliSock.close()
 

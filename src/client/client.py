@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 
 from socket import *
 
@@ -11,15 +11,12 @@ tcpCliSock = socket(AF_INET, SOCK_STREAM)
 tcpCliSock.connect(ADDR)
 
 while True:
-	data = input("Hello World!")
-	if not data:
-		break
-
-	tcpCliSock.send(bytes(data, 'utf-8'))
+	data = 'Hello World!'.encode('utf-8')
+	tcpCliSock.sendall(data)
 	data = tcpCliSock.recv(BUFSIZ)
 	if not data:
 		break
-
 	print(data.decode('utf-8'))
+	break
 
 tcpCliSock.close()
